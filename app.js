@@ -401,8 +401,8 @@ document.addEventListener('DOMContentLoaded', () => {
             habitsList.innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-ghost"></i>
-                    <p>No habits?? Even my 2012 Tumblr phase was more structured 💅📉</p>
-                    <p>Add something above to get started.</p>
+                    <p>no habits??? ur arc ain't even started yet 💀</p>
+                    <p>type something above and stop lurking lil bro 🫵</p>
                 </div>
             `;
             return;
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function updateFeedbackBanner() {
         if (habits.length === 0) {
-            feedbackBanner.textContent = "Add a habit, you coward.";
+            feedbackBanner.textContent = "bro log something or close the app. deadass.";
             return;
         }
         
@@ -501,18 +501,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (completionRate === 100 && totalEntries > 0) {
             // Perfect completion rate
             message = isToxicMode
-                ? "You're HIM. Don't let it get to your head."
-                : "Perfect! You're crushing every single habit!";
+                ? "u actually completed everything? lowkey suspicious 🤨"
+                : "100% complete? went off a lil too hard bestie 🏆✨";
         } else if (completionRate === 0 && totalEntries > 0) {
             // 0% completion rate
             message = isToxicMode
-                ? "What even is your goal here? To fail at everything?"
-                : "Maybe try checking at least one habit as done?";
+                ? "zero percent completion is crazy. like actually wild 💀"
+                : "bro flopped on every single habit. iconic in a sad way 📉";
         } else if (completionRate < 50 && totalEntries > 5) {
             // Less than 50% completion with significant data
             message = isToxicMode
-                ? "You're allergic to discipline, aren't you?"
-                : "You're struggling a bit - try focusing on just one habit.";
+                ? "below 50%?? just delete the whole app fr 📱🗑️"
+                : "struggling a bit. maybe try just one habit? baby steps 👶";
         } else if (avgStreak >= 5) {
             message = getRandomMessage(isToxicMode ? encouragementMessages : supportiveEncouragementMessages);
         } else if (avgStreak >= 2) {
@@ -715,72 +715,71 @@ document.addEventListener('DOMContentLoaded', () => {
     // Message Arrays - Toxic Mode
     const roastMessages = [
         "bro you are so ahhh 💀",
-        "this some side character discipline rn 🫠",
-        "you treat habits like group chats. ignored. 📵",
-        "bro just sybau u aint even tryin 💀",
-        "ik u ain't postin quotes on insta w/ THIS effort 🧢",
-        "this app tracking vibes not progress fr 😭",
-        "1 habit? failed. 2 habits? also failed. skill issue 🎮",
-        "you're doing cardio from running from responsibility 🏃‍♂️",
-        "even your shadow left outta disappointment 😭☠️",
-        "ur consistency level is 'cried once and gave up' 😢🫥"
+        "ts pmo... you ain't even tryin 😒",
+        "this some npc character arc rn 👎",
+        "your habits got less consistency than your wifi 📶❌",
+        "just sybau lil bro, this app ain't therapy 🧠🔨",
+        "bro out here logging nothing like it's a personality 📉",
+        "1 day streak then ghosted. you are so ahhh 💀",
+        "even your screen time more consistent than your habits 📱💀",
+        "ur effort got nerfed irl 💢",
+        "bro what is this graph?? modern art? 🖼️😭"
     ];
     
     const neutralMessages = [
-        "you're tryin but like... not enough 😐",
-        "half-assed but make it ✨aesthetic✨ 📉",
-        "ur graph got more dips than salsa 🫳🫠",
-        "bare minimum? you bodied it 🤏",
-        "you logging habits like it's optional homework 📚",
-        "could be worse. could also be better 🫤",
-        "ur effort is giving 'i'll start monday' energy 🗓️",
-        "we're teetering on 'i tried' and 'idc' rn 🤷‍♂️"
+        "you're kinda trying... in a background-process kinda way 🛑",
+        "half-sent. no delivery. 📩",
+        "ur stats look like crypto rn 📉",
+        "ok you're doing *something*... i guess 🤷‍♂️",
+        "not bad but still not giving... effort 😐",
+        "this timeline mid. could be worse tho 🧍",
+        "bare minimum vibes but ok ✏️",
+        "you're floating bro. log something solid 🫥"
     ];
     
     const encouragementMessages = [
-        "ok wait… you kinda ate?? 🍽️",
-        "who is this?? motivation arc unlocked 🔓",
-        "not you being consistent and sexy 💅🔥",
-        "u got that grindset in u huh 😤",
-        "lemme find out u got goals now 👀📈",
-        "this the energy we manifesting ALL year 🌟",
-        "you're him. no, like actually HIM 💯",
-        "ur habits are giving main character energy 🎬",
-        "i ain't even mad. proud of u fr 😌🫡"
+        "hold up... lil bro actually grinding?? 💪",
+        "ok maybe you not background character anymore 🎭",
+        "not bad for a former ahhh 💀",
+        "main quest progress detected 📈",
+        "you're actually doing it?? shocking but slayless 💯",
+        "consistency? unlocked. just don't choke now 🗝️",
+        "you got that discipline.exe running ✅",
+        "daily logging?? real. shocking. 🔌"
     ];
     
     // Message Arrays - Supportive Mode
     const supportiveRoastMessages = [
-        "hey, at least you opened the app. small W 📱",
-        "you didn't log today? classic you 😅",
-        "this streak is streaking… in reverse 💀",
-        "your habits miss you. they texted me 📞",
-        "ngl you kinda ghosted your goals 👻",
-        "listen, failure is part of the aesthetic ✨",
-        "you flopped. but like, in a relatable way 🤷‍♀️",
-        "not mad. just disappointed. but like… in a gentle way 🥲"
+        "hey, you opened the app. that's a W 📱",
+        "you flopped. it's fine. try again 😅",
+        "this streak is streaking backwards 💀",
+        "your habits called. they miss you 📞",
+        "ngl bro, you ghosted progress 👻",
+        "relatable L. try tomorrow 💤",
+        "not mad, just disappointed. like lightly 🫠",
+        "even this message trying harder than you rn 😬"
     ];
     
     const supportiveNeutralMessages = [
-        "you're trying. and that counts. kinda 😌",
-        "some effort > no effort. science 📊",
-        "eh, you're cooking—just on low heat 🧑‍🍳",
-        "progress looks weird sometimes. keep going 🔁",
-        "habit streak? it's in its awkward teen phase 🧍‍♂️",
-        "could've done more. but hey, you did *something* ✨",
-        "you didn't crush it, but you didn't disappear either 🫥",
-        "i see the effort. it's shy, but it's there 👀"
+        "you're trying. not hard. but trying 😌",
+        "progress bar loading... slowly 🐌",
+        "some days are mid. it's ok 🫡",
+        "habit graph going through it rn 📉",
+        "low effort > no effort 📊",
+        "this is the warm-up arc, right? right? 🤨",
+        "not you doing things semi-regularly 🫢",
+        "you alive. barely. but we move 💀"
     ];
     
     const supportiveEncouragementMessages = [
-        "okay, consistency king/queen 😤👑",
-        "you're out here acting like you love yourself. i love that 💕",
-        "you're THAT person rn. keep it up! 🔥",
-        "look at you. habits looking tightttt 🔥🫶",
-        "this is that 'i got my life together' energy 🧘‍♂️",
-        "go ahead and flex on your past self 💪✨",
-        "you understood the assignment. and the bonus question ✅",
-        "ur inner child is proud af rn 🧸🥹"
+        "ok habit demon, i see you 🔥",
+        "you logging like you mean it 🧠",
+        "consistency kinda eating lately 👀",
+        "u cooking now, fr 🍳",
+        "past you lowkey jealous rn 🔁",
+        "main character habits loading... 🎬",
+        "u got this. don't fold now ✊",
+        "ur routine looking less unserious. proud-ish 🫶"
     ];
     
     /**
@@ -799,7 +798,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calendarHabitsList.innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-calendar-times"></i>
-                    <p>Calendar dry as hell. Touch grass—or add a habit. 🌾📅</p>
+                    <p>calendar dry af. log something before it gets dusty 📅🕸️</p>
                 </div>
             `;
             return;
@@ -916,7 +915,7 @@ document.addEventListener('DOMContentLoaded', () => {
             statsHabitsList.innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-chart-pie"></i>
-                    <p>Analytics said "idk bro." Log *something* next time 📉💀</p>
+                    <p>analytics said: bro you doing NOTHING 📊❌</p>
                 </div>
             `;
             
