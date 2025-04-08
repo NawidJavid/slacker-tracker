@@ -73,6 +73,18 @@ h1 {
     margin-bottom: 20px;
 }
 
+.signature {
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-style: italic;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.supportive-mode .signature {
+    color: var(--supportive-primary);
+}
+
 /* Feedback Banner */
 .feedback-banner {
     background: linear-gradient(to right, var(--secondary), var(--primary));
