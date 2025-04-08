@@ -125,6 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function loadThemePreference() {
         // If no preference has been set, default to Toxic mode (true)
+        const storedPreference = localStorage.getItem('slackerTracker_toxicMode');
+        
+        // For new users, explicitly set the default preference
+        if (storedPreference === null) {
+            localStorage.setItem('slackerTracker_toxicMode', 'true');
+        }
+        
         const isToxicMode = localStorage.getItem('slackerTracker_toxicMode') !== 'false';
         themeToggle.checked = isToxicMode;
         
@@ -394,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
             habitsList.innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-ghost"></i>
-                    <p>Wow, no habits? You're not even trying.</p>
+                    <p>No habits?? Even my 2012 Tumblr phase was more structured 💅📉</p>
                     <p>Add something above to get started.</p>
                 </div>
             `;
@@ -489,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const avgStreak = totalStreak / habits.length;
         
         let message;
-        const isToxicMode = localStorage.getItem('slackerTracker_toxicMode') === 'true';
+        const isToxicMode = localStorage.getItem('slackerTracker_toxicMode') !== 'false';
         
         if (completionRate === 100 && totalEntries > 0) {
             // Perfect completion rate
@@ -539,33 +546,33 @@ document.addEventListener('DOMContentLoaded', () => {
      * Get a message for a specific habit
      */
     function getHabitMessage(habit) {
-        const isToxicMode = localStorage.getItem('slackerTracker_toxicMode') === 'true';
+        const isToxicMode = localStorage.getItem('slackerTracker_toxicMode') !== 'false';
         
         if (habit.streak >= 5) {
             if (habit.streak === habit.longestStreak && habit.streak > 7) {
                 return isToxicMode
-                    ? `${habit.streak} days! New personal best!`
-                    : `Amazing! ${habit.streak} days is your new record!`;
+                    ? `${habit.streak} days?! new high score unlocked 🧠🔥`
+                    : `Omg slay, ${habit.streak} days is your new record! 🌟`;
             }
             return isToxicMode
-                ? `You're crushing it! ${habit.streak} days in a row!`
-                : `Great job! ${habit.streak} day streak and counting!`;
+                ? `${habit.streak} days in a row? ok consistency demon 😈`
+                : `You're killing it! ${habit.streak} day streak and growing 💪`;
         } else if (habit.streak >= 2) {
             return isToxicMode
-                ? `Keep it up! Don't break the chain now.`
-                : `You're building momentum with ${habit.streak} days!`;
+                ? `Chain is chainin'. Don't fumble it now 🔗`
+                : `Momentum unlocked! ${habit.streak} days strong 💫`;
         } else if (habit.streak === 1) {
             return isToxicMode
-                ? `Day 1... again. Let's see if you last.`
-                : `First day is always the hardest. Keep going!`;
+                ? `Day 1 again? it's giving deja flop 💀`
+                : `Day 1! Proud of u for showing up 🫶`;
         } else if (habit.longestStreak > 5) {
             return isToxicMode
-                ? `Longest streak: ${habit.longestStreak}. You peaked.`
-                : `Your best streak was ${habit.longestStreak} days. You can do it again!`;
+                ? `Ur best was ${habit.longestStreak} days. And now? 💀`
+                : `You've done ${habit.longestStreak} days before. Let's run it back 🔁`;
         } else {
             return isToxicMode
-                ? `${habit.missed} failures and counting. Try harder?`
-                : `Missed ${habit.missed} times. Today is a new beginning!`;
+                ? `${habit.missed} flops in and still typing. Iconic. 🤡`
+                : `Missed ${habit.missed} times, but you're still here 💗`;
         }
     }
     
@@ -707,72 +714,73 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Message Arrays - Toxic Mode
     const roastMessages = [
-        "Seriously? This is pathetic.",
-        "My grandma has better habits than you.",
-        "I'd say you're disappointing your parents, but they already know.",
-        "Did you even try today?",
-        "This app is literally called SlackerTracker, but you're taking it too literally.",
-        "Mediocrity is your comfort zone, huh?",
-        "You know what's consistent? Your inconsistency.",
-        "I've seen more discipline in a toddler.",
-        "At this rate, you'll accomplish your goals by... never."
+        "bro you are so ahhh 💀",
+        "this some side character discipline rn 🫠",
+        "you treat habits like group chats. ignored. 📵",
+        "bro just sybau u aint even tryin 💀",
+        "ik u ain't postin quotes on insta w/ THIS effort 🧢",
+        "this app tracking vibes not progress fr 😭",
+        "1 habit? failed. 2 habits? also failed. skill issue 🎮",
+        "you're doing cardio from running from responsibility 🏃‍♂️",
+        "even your shadow left outta disappointment 😭☠️",
+        "ur consistency level is 'cried once and gave up' 😢🫥"
     ];
     
     const neutralMessages = [
-        "Not terrible, not great. Just... meh.",
-        "You're barely trying and it shows.",
-        "Looking for a participation trophy?",
-        "At least you're doing something, I guess.",
-        "The bar was low, and you just cleared it.",
-        "Consistency is key. You should try it sometime.",
-        "You call this effort? Interesting choice.",
-        "Showing up is half the battle. You're at like 52%."
+        "you're tryin but like... not enough 😐",
+        "half-assed but make it ✨aesthetic✨ 📉",
+        "ur graph got more dips than salsa 🫳🫠",
+        "bare minimum? you bodied it 🤏",
+        "you logging habits like it's optional homework 📚",
+        "could be worse. could also be better 🫤",
+        "ur effort is giving 'i'll start monday' energy 🗓️",
+        "we're teetering on 'i tried' and 'idc' rn 🤷‍♂️"
     ];
     
     const encouragementMessages = [
-        "OK you're kinda killing it right now!",
-        "Didn't expect this from you. Well done!",
-        "You're actually not sucking for once!",
-        "Whatever you're on, keep taking it!",
-        "Is this... actual discipline? From YOU?",
-        "You're on fire! Who knew you had it in you?",
-        "I'm genuinely impressed. Don't let it get to your head.",
-        "You're HIM",
-        "My expectations were low but DAMN!"
+        "ok wait… you kinda ate?? 🍽️",
+        "who is this?? motivation arc unlocked 🔓",
+        "not you being consistent and sexy 💅🔥",
+        "u got that grindset in u huh 😤",
+        "lemme find out u got goals now 👀📈",
+        "this the energy we manifesting ALL year 🌟",
+        "you're him. no, like actually HIM 💯",
+        "ur habits are giving main character energy 🎬",
+        "i ain't even mad. proud of u fr 😌🫡"
     ];
     
     // Message Arrays - Supportive Mode
     const supportiveRoastMessages = [
-        "Let's try to build some momentum today!",
-        "Everyone starts somewhere. Today is your day!",
-        "Small steps lead to big results.",
-        "Don't worry about yesterday, focus on today.",
-        "One habit at a time - you've got this!",
-        "Progress isn't always linear. Keep going!",
-        "Today is a new opportunity to succeed.",
-        "Each day is a fresh start."
+        "hey, at least you opened the app. small W 📱",
+        "you didn't log today? classic you 😅",
+        "this streak is streaking… in reverse 💀",
+        "your habits miss you. they texted me 📞",
+        "ngl you kinda ghosted your goals 👻",
+        "listen, failure is part of the aesthetic ✨",
+        "you flopped. but like, in a relatable way 🤷‍♀️",
+        "not mad. just disappointed. but like… in a gentle way 🥲"
     ];
     
     const supportiveNeutralMessages = [
-        "You're making progress! Keep it up!",
-        "Consistency will come with time.",
-        "You're doing better than you think!",
-        "Small wins add up to big victories.",
-        "Building good habits takes time.",
-        "You're on the right track!",
-        "Every day you try is a success.",
-        "Keep focusing on progress, not perfection."
+        "you're trying. and that counts. kinda 😌",
+        "some effort > no effort. science 📊",
+        "eh, you're cooking—just on low heat 🧑‍🍳",
+        "progress looks weird sometimes. keep going 🔁",
+        "habit streak? it's in its awkward teen phase 🧍‍♂️",
+        "could've done more. but hey, you did *something* ✨",
+        "you didn't crush it, but you didn't disappear either 🫥",
+        "i see the effort. it's shy, but it's there 👀"
     ];
     
     const supportiveEncouragementMessages = [
-        "Incredible work! You're crushing these habits!",
-        "Look at you go! So impressive!",
-        "Your consistency is truly admirable!",
-        "What an amazing streak you're building!",
-        "You should be so proud of your dedication!",
-        "Fantastic effort! Keep it up!",
-        "Your hard work is really paying off!",
-        "You're absolutely nailing this!"
+        "okay, consistency king/queen 😤👑",
+        "you're out here acting like you love yourself. i love that 💕",
+        "you're THAT person rn. keep it up! 🔥",
+        "look at you. habits looking tightttt 🔥🫶",
+        "this is that 'i got my life together' energy 🧘‍♂️",
+        "go ahead and flex on your past self 💪✨",
+        "you understood the assignment. and the bonus question ✅",
+        "ur inner child is proud af rn 🧸🥹"
     ];
     
     /**
@@ -791,7 +799,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calendarHabitsList.innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-calendar-times"></i>
-                    <p>Nothing to show here. Add some habits first.</p>
+                    <p>Calendar dry as hell. Touch grass—or add a habit. 🌾📅</p>
                 </div>
             `;
             return;
@@ -908,7 +916,7 @@ document.addEventListener('DOMContentLoaded', () => {
             statsHabitsList.innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-chart-pie"></i>
-                    <p>No data to analyze. Add some habits first.</p>
+                    <p>Analytics said "idk bro." Log *something* next time 📉💀</p>
                 </div>
             `;
             
