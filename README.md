@@ -2,6 +2,8 @@
 
 A brutally honest habit tracker that doesn't sugarcoat your failures or over-celebrate your wins. It tells it like it is.
 
+[Visit GitHub Repository](https://github.com/nwdjvd/slacker-tracker)
+
 ## About
 
 SlackerTracker is a web-based habit tracker that works entirely offline. It's designed to be:
@@ -15,13 +17,23 @@ SlackerTracker is a web-based habit tracker that works entirely offline. It's de
 - Add multiple daily habits to track
 - Log whether you completed each habit daily
 - View your current streak and missed day count for each habit
-- Get "motivational" feedback based on your consistency
+- Calendar view to visualize your habit history
+- Stats dashboard to track your overall performance
+- Switch between "Toxic" and "Supportive" mode
+- Export/import your data for backup
 - Bold, fun UI with emoji status indicators
 - Fully responsive design
 
 ## Getting Started
 
-1. Clone this repository or download the files
+### Option 1: Use the live version
+Simply visit [SlackerTracker on GitHub Pages](https://nwdjvd.github.io/slacker-tracker/) to use the application directly in your browser.
+
+### Option 2: Run locally
+1. Clone this repository:
+   ```
+   git clone https://github.com/nwdjvd/slacker-tracker.git
+   ```
 2. Open `index.html` in any modern web browser
 3. Add your first habit and start tracking
 
@@ -29,8 +41,10 @@ SlackerTracker is a web-based habit tracker that works entirely offline. It's de
 
 - **Adding Habits**: Enter a habit name and click "Add Habit"
 - **Tracking**: For each habit, click "Done Today" or "Nope" to log your daily progress
-- **Viewing Stats**: Each habit card shows your current streak and total missed days
-- **Feedback**: The app gives you different feedback messages based on your performance
+- **Calendar View**: View and edit your history by clicking on specific dates
+- **Stats**: See your overall performance and completion rates
+- **Theme Toggle**: Switch between "Toxic" (harsh feedback) and "Supportive" (gentle encouragement) modes
+- **Backup**: Export your data as JSON file and import it later if needed
 
 ## Technical Details
 
@@ -46,4 +60,8 @@ All data is stored locally in your browser using localStorage. Nothing is sent t
 
 ## License
 
-Feel free to modify and use this code however you want. Credit is appreciated but not required. 
+MIT License - feel free to modify and use this code however you want.
+
+## Contributing
+
+Pull requests are welcome! Feel free to improve SlackerTracker and make it even more fun and effective. 
