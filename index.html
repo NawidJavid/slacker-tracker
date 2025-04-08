@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlackerTracker v2 - The Brutally Honest Habit Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SlackerTracker</h1>
+            <p class="tagline">Track Your Habits. Get Roasted.</p>
+            <div id="feedback-banner" class="feedback-banner">
+                <!-- Dynamic feedback will go here -->
+            </div>
+        </header>
+
+        <div class="top-bar">
+            <div class="view-toggles">
+                <button id="list-view-btn" class="view-btn active">
+                    <i class="fas fa-list"></i> List
+                </button>
+                <button id="calendar-view-btn" class="view-btn">
+                    <i class="fas fa-calendar-alt"></i> Calendar
+                </button>
+                <button id="stats-view-btn" class="view-btn">
+                    <i class="fas fa-chart-bar"></i> Stats
+                </button>
+            </div>
+            <div class="settings-dropdown">
+                <button id="settings-btn" class="settings-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <div class="dropdown-content">
+                    <div class="theme-toggle">
+                        <span class="dropdown-label">Mode</span>
+                        <div class="toggle-container">
+                            <span class="toggle-label">Supportive</span>
+                            <label class="toggle">
+                                <input type="checkbox" id="theme-toggle">
+                                <span class="slider round"></span>
+                            </label>
+                            <span class="toggle-label">Toxic</span>
+                        </div>
+                    </div>
+                    <button id="export-btn" class="dropdown-btn">
+                        <i class="fas fa-file-export"></i> Export Data
+                    </button>
+                    <div class="import-container">
+                        <label for="import-file" class="dropdown-btn">
+                            <i class="fas fa-file-import"></i> Import Data
+                        </label>
+                        <input type="file" id="import-file" accept=".json" hidden>
+                    </div>
+                    <button id="reset-btn" class="dropdown-btn danger">
+                        <i class="fas fa-trash-alt"></i> Reset All Data
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-habit-container">
+            <h2>Add New Habit</h2>
+            <div class="add-habit-form">
+                <input type="text" id="new-habit-name" placeholder="What habit are you probably going to fail at?">
+                <button id="add-habit-btn">Add Habit</button>
+            </div>
+        </div>
+
+        <!-- Main content area -->
+        <div id="main-content">
+            <!-- List View (default) -->
+            <div id="list-view" class="active-view">
+                <div class="habits-container">
+                    <h2>Your Habits</h2>
+                    <div id="habits-list">
+                        <!-- Habit cards will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar View -->
+            <div id="calendar-view" class="view">
+                <div class="calendar-container">
+                    <h2>Calendar View</h2>
+                    <div class="month-selector">
+                        <button id="prev-month-btn" class="month-nav-btn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span id="current-month-display">April 2025</span>
+                        <button id="next-month-btn" class="month-nav-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div id="calendar-habits-list">
+                        <!-- Calendar view habits will be added here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats View -->
+            <div id="stats-view" class="view">
+                <div class="stats-container">
+                    <h2>Your Stats</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card" id="total-completed">
+                            <div class="stat-title">Total Completed</div>
+                            <div class="stat-value">0</div>
+                        </div>
+                        <div class="stat-card" id="overall-completion-rate">
+                            <div class="stat-title">Completion Rate</div>
+                            <div class="stat-value">0%</div>
+                        </div>
+                        <div class="stat-card" id="longest-streak">
+                            <div class="stat-title">Longest Streak</div>
+                            <div class="stat-value">0</div>
+                        </div>
+                        <div class="stat-card" id="current-streak">
+                            <div class="stat-title">Current Streak</div>
+                            <div class="stat-value">0</div>
+                        </div>
+                    </div>
+                    <div class="habits-stats-list">
+                        <h3>Per Habit Breakdown</h3>
+                        <div id="stats-habits-list">
+                            <!-- Stats for individual habits will go here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for confirmation dialogs -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Confirmation</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body" id="modal-message">
+                Are you sure?
+            </div>
+            <div class="modal-footer">
+                <button id="modal-cancel" class="btn">Cancel</button>
+                <button id="modal-confirm" class="btn btn-danger">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
