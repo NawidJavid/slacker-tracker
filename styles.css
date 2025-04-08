@@ -143,6 +143,53 @@ h1 {
     color: #555;
 }
 
+/* Mode Toggle in Top Bar */
+.mode-toggle {
+    display: flex;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 5px 12px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.supportive-mode .mode-toggle {
+    background-color: #eaeaea;
+}
+
+.mode-toggle .toggle-label {
+    font-size: 0.9rem;
+    margin: 0 5px;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+.mode-toggle .toggle-label.supportive {
+    color: var(--supportive-primary);
+}
+
+.mode-toggle .toggle-label.toxic {
+    color: var(--primary);
+}
+
+.toggle-label.supportive {
+    opacity: 0.6;
+}
+
+.supportive-mode .toggle-label.supportive {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.toggle-label.toxic {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.supportive-mode .toggle-label.toxic {
+    opacity: 0.6;
+    font-weight: normal;
+}
+
 /* Settings Dropdown */
 .settings-dropdown {
     position: relative;
@@ -250,32 +297,12 @@ h1 {
 }
 
 /* Theme Toggle Switch */
-.theme-toggle {
-    padding: 8px 16px 16px;
-    border-bottom: 1px solid #333;
-}
-
-.supportive-mode .theme-toggle {
-    border-bottom: 1px solid #eee;
-}
-
-.toggle-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.toggle-label {
-    font-size: 0.9rem;
-    color: #aaa;
-}
-
 .toggle {
     position: relative;
     display: inline-block;
     width: 40px;
     height: 22px;
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 .toggle input {
