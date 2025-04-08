@@ -124,7 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
      * Load theme preference from localStorage
      */
     function loadThemePreference() {
-        const isToxicMode = localStorage.getItem('slackerTracker_toxicMode') === 'true';
+        // If no preference has been set, default to Toxic mode (true)
+        const isToxicMode = localStorage.getItem('slackerTracker_toxicMode') !== 'false';
         themeToggle.checked = isToxicMode;
         
         if (isToxicMode) {
@@ -736,7 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "Is this... actual discipline? From YOU?",
         "You're on fire! Who knew you had it in you?",
         "I'm genuinely impressed. Don't let it get to your head.",
-        "You're HIM/HER! (For now at least)",
+        "You're HIM",
         "My expectations were low but DAMN!"
     ];
     
