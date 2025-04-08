@@ -398,14 +398,13 @@ document.addEventListener('DOMContentLoaded', () => {
         habitsList.innerHTML = '';
         
         if (habits.length === 0) {
-            const emptyMessage = document.createElement('div');
-            emptyMessage.className = 'empty-state';
-            emptyMessage.innerHTML = `
-                <i class="fas fa-ghost"></i>
-                <p>no habits??? ur arc ain't even started yet <span class="emoji">💀</span></p>
-                <p>type something above and stop lurking lil bro <span class="emoji">🫵</span></p>
+            habitsList.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-ghost"></i>
+                    <p>no habits??? ur arc ain't even started yet 💀</p>
+                    <p>type something above and stop lurking lil bro 🫵</p>
+                </div>
             `;
-            habitsList.appendChild(emptyMessage);
             return;
         }
         
@@ -475,11 +474,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 logHabit(habitId, false);
             });
         });
-        
-        // After rendering, refresh emoji replacements if the replacer exists
-        if (window.appleEmojiReplacer) {
-            window.appleEmojiReplacer.refresh();
-        }
     }
     
     /**
@@ -487,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function updateFeedbackBanner() {
         if (habits.length === 0) {
-            feedbackBanner.innerHTML = "bro log something or close the app. <span class='emoji'>deadass</span>.";
+            feedbackBanner.textContent = "bro log something or close the app. deadass.";
             return;
         }
         
@@ -507,18 +501,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (completionRate === 100 && totalEntries > 0) {
             // Perfect completion rate
             message = isToxicMode
-                ? "u actually completed everything? lowkey suspicious <span class='emoji'>🤨</span>"
-                : "100% complete? went off a lil too hard bestie <span class='emoji'>🏆</span><span class='emoji'>✨</span>";
+                ? "u actually completed everything? lowkey suspicious 🤨"
+                : "100% complete? went off a lil too hard bestie 🏆✨";
         } else if (completionRate === 0 && totalEntries > 0) {
             // 0% completion rate
             message = isToxicMode
-                ? "zero percent completion is crazy. like actually wild <span class='emoji'>💀</span>"
-                : "bro flopped on every single habit. iconic in a sad way <span class='emoji'>📉</span>";
+                ? "zero percent completion is crazy. like actually wild 💀"
+                : "bro flopped on every single habit. iconic in a sad way 📉";
         } else if (completionRate < 50 && totalEntries > 5) {
             // Less than 50% completion with significant data
             message = isToxicMode
-                ? "below 50%?? just delete the whole app fr <span class='emoji'>📱</span><span class='emoji'>🗑️</span>"
-                : "struggling a bit. maybe try just one habit? baby steps <span class='emoji'>��</span>";
+                ? "below 50%?? just delete the whole app fr 📱🗑️"
+                : "struggling a bit. maybe try just one habit? baby steps 👶";
         } else if (avgStreak >= 5) {
             message = getRandomMessage(isToxicMode ? encouragementMessages : supportiveEncouragementMessages);
         } else if (avgStreak >= 2) {
@@ -527,12 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
             message = getRandomMessage(isToxicMode ? roastMessages : supportiveRoastMessages);
         }
         
-        feedbackBanner.innerHTML = message;
-        
-        // After updating banner, refresh emoji replacements if the replacer exists
-        if (window.appleEmojiReplacer) {
-            window.appleEmojiReplacer.refresh();
-        }
+        feedbackBanner.textContent = message;
     }
     
     /**
@@ -578,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 : `Day 1! Proud of u for showing up 🫶`;
         } else if (habit.longestStreak > 5) {
             return isToxicMode
-                ? `Ur best was ${habit.longestStreak} days. And now? `
+                ? `Ur best was ${habit.longestStreak} days. And now? 💀`
                 : `You've done ${habit.longestStreak} days before. Let's run it back 🔁`;
         } else {
             return isToxicMode
@@ -725,72 +714,72 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Message Arrays - Toxic Mode
     const roastMessages = [
-        "bro you are so ahhh <span class='emoji'>💀</span>",
-        "ts pmo... you ain't even tryin <span class='emoji'>😒</span>",
-        "this some npc character arc rn <span class='emoji'>👎</span>",
-        "your habits got less consistency than your wifi <span class='emoji'>📶</span><span class='emoji'>❌</span>",
-        "just sybau lil bro, this app ain't therapy <span class='emoji'>🧠</span><span class='emoji'>🔨</span>",
-        "bro out here logging nothing like it's a personality <span class='emoji'>📉</span>",
-        "1 day streak then ghosted. you are so ahhh <span class='emoji'>💀</span>",
-        "even your screen time more consistent than your habits <span class='emoji'>📱</span><span class='emoji'>💀</span>",
-        "ur effort got nerfed irl <span class='emoji'>💢</span>",
-        "bro what is this graph?? modern art? <span class='emoji'>🖼️</span><span class='emoji'>😭</span>"
+        "bro you are so ahhh 💀",
+        "ts pmo... you ain't even tryin 😒",
+        "this some npc character arc rn 👎",
+        "your habits got less consistency than your wifi 📶❌",
+        "just sybau lil bro, this app ain't therapy 🧠🔨",
+        "bro out here logging nothing like it's a personality 📉",
+        "1 day streak then ghosted. you are so ahhh 💀",
+        "even your screen time more consistent than your habits 📱💀",
+        "ur effort got nerfed irl 💢",
+        "bro what is this graph?? modern art? 🖼️😭"
     ];
     
     const neutralMessages = [
-        "you're kinda trying... in a background-process kinda way <span class='emoji'>🛑</span>",
-        "half-sent. no delivery. <span class='emoji'>📩</span>",
-        "ur stats look like crypto rn <span class='emoji'>📉</span>",
-        "ok you're doing *something*... i guess <span class='emoji'>🤷‍♂️</span>",
-        "not bad but still not giving... effort <span class='emoji'>😐</span>",
-        "this timeline mid. could be worse tho <span class='emoji'>🧍</span>",
-        "bare minimum vibes but ok <span class='emoji'>✏️</span>",
-        "you're floating bro. log something solid <span class='emoji'>🫥</span>"
+        "you're kinda trying... in a background-process kinda way 🛑",
+        "half-sent. no delivery. 📩",
+        "ur stats look like crypto rn 📉",
+        "ok you're doing *something*... i guess 🤷‍♂️",
+        "not bad but still not giving... effort 😐",
+        "this timeline mid. could be worse tho 🧍",
+        "bare minimum vibes but ok ✏️",
+        "you're floating bro. log something solid 🫥"
     ];
     
     const encouragementMessages = [
-        "hold up... lil bro actually grinding?? <span class='emoji'>💪</span>",
-        "ok maybe you not background character anymore <span class='emoji'>🎭</span>",
-        "not bad for a former ahhh <span class='emoji'>💀</span>",
-        "main quest progress detected <span class='emoji'>📈</span>",
-        "you're actually doing it?? shocking but slayless <span class='emoji'>💯</span>",
-        "consistency? unlocked. just don't choke now <span class='emoji'>🗝️</span>",
-        "you got that discipline.exe running <span class='emoji'>✅</span>",
-        "daily logging?? real. shocking. <span class='emoji'>🔌</span>"
+        "hold up... lil bro actually grinding?? 💪",
+        "ok maybe you not background character anymore 🎭",
+        "not bad for a former ahhh 💀",
+        "main quest progress detected 📈",
+        "you're actually doing it?? shocking but slayless 💯",
+        "consistency? unlocked. just don't choke now 🗝️",
+        "you got that discipline.exe running ✅",
+        "daily logging?? real. shocking. 🔌"
     ];
     
     // Message Arrays - Supportive Mode
     const supportiveRoastMessages = [
-        "hey, you opened the app. that's a W <span class='emoji'>📱</span>",
-        "you flopped. it's fine. try again <span class='emoji'>😅</span>",
-        "this streak is streaking backwards <span class='emoji'>💀</span>",
-        "your habits called. they miss you <span class='emoji'>📞</span>",
-        "ngl bro, you ghosted progress <span class='emoji'>👻</span>",
-        "relatable L. try tomorrow <span class='emoji'>💤</span>",
-        "not mad, just disappointed. like lightly <span class='emoji'>��</span>",
-        "even this message trying harder than you rn <span class='emoji'>😬</span>"
+        "hey, you opened the app. that's a W 📱",
+        "you flopped. it's fine. try again 😅",
+        "this streak is streaking backwards 💀",
+        "your habits called. they miss you 📞",
+        "ngl bro, you ghosted progress 👻",
+        "relatable L. try tomorrow 💤",
+        "not mad, just disappointed. like lightly 🫠",
+        "even this message trying harder than you rn 😬"
     ];
     
     const supportiveNeutralMessages = [
-        "you're trying. not hard. but trying <span class='emoji'>��</span>",
-        "progress bar loading... slowly <span class='emoji'>��</span>",
-        "some days are mid. it's ok <span class='emoji'>🫡</span>",
-        "habit graph going through it rn <span class='emoji'>📉</span>",
-        "low effort > no effort <span class='emoji'>📊</span>",
-        "this is the warm-up arc, right? right? <span class='emoji'>🤨</span>",
-        "not you doing things semi-regularly <span class='emoji'>🫢</span>",
-        "you alive. barely. but we move <span class='emoji'>💀</span>"
+        "you're trying. not hard. but trying 😌",
+        "progress bar loading... slowly 🐌",
+        "some days are mid. it's ok 🫡",
+        "habit graph going through it rn 📉",
+        "low effort > no effort 📊",
+        "this is the warm-up arc, right? right? 🤨",
+        "not you doing things semi-regularly 🫢",
+        "you alive. barely. but we move 💀"
     ];
     
     const supportiveEncouragementMessages = [
-        "ok habit demon, i see you <span class='emoji'>🔥</span>",
-        "you logging like you mean it <span class='emoji'>🧠</span>",
-        "consistency kinda eating lately <span class='emoji'>👀</span>",
-        "u cooking now, fr <span class='emoji'>🍳</span>",
-        "past you lowkey jealous rn <span class='emoji'>🔁</span>",
-        "main character habits loading... <span class='emoji'>��</span>",
-        "u got this. don't fold now <span class='emoji'>✊</span>",
-        "ur routine looking less unserious. proud-ish <span class='emoji'>🫶</span>"
+        "ok habit demon, i see you 🔥",
+        "you logging like you mean it 🧠",
+        "consistency kinda eating lately 👀",
+        "u cooking now, fr 🍳",
+        "past you lowkey jealous rn 🔁",
+        "main character habits loading... 🎬",
+        "u got this. don't fold now ✊",
+        "ur routine looking less unserious. proud-ish 🫶"
     ];
     
     /**
@@ -1010,9 +999,4 @@ document.addEventListener('DOMContentLoaded', () => {
         const completedEntries = monthEntries.filter(entry => entry.done).length;
         return Math.round((completedEntries / monthEntries.length) * 100);
     }
-
-    // Load the emoji replacer script
-    const emojiScript = document.createElement('script');
-    emojiScript.src = 'emoji-replacer.js';
-    document.head.appendChild(emojiScript);
 }); 

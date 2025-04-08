@@ -27,13 +27,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Add emoji font styles for Apple-style emojis */
-.emoji, .habit-status, .habit-stat-status {
-    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    display: inline-flex;
-    align-items: center;
-}
-
 body {
     background-color: var(--dark-bg);
     color: var(--light);
@@ -535,7 +528,6 @@ input:checked + .slider:before {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 15px;
-    position: relative;
 }
 
 .habit-name {
@@ -552,7 +544,6 @@ input:checked + .slider:before {
 .habit-status {
     font-size: 2rem;
     line-height: 1;
-    margin-right: 30px;
 }
 
 .habit-metrics {
@@ -626,7 +617,7 @@ input:checked + .slider:before {
     color: #a0a0a0;
     padding: 5px;
     position: absolute;
-    top: 0;
+    top: 15px;
     right: 15px;
     font-size: 1rem;
 }
@@ -1098,13 +1089,4 @@ input:checked + .slider:before {
         font-size: 0.8rem;
         padding: 8px 10px;
     }
-}
-
-/* Add styles for Apple emoji images */
-.apple-emoji {
-    display: inline-block;
-    vertical-align: middle;
-    height: 1.2em;
-    width: auto;
-    margin: 0 0.05em;
 } 
