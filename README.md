@@ -2,7 +2,7 @@
 
 A brutally honest habit tracker that doesn't sugarcoat your failures or over-celebrate your wins. It tells it like it is.
 
-[Visit GitHub Repository](https://github.com/nwdjvd/slacker-tracker)
+[Visit GitHub Repository](https://github.com/NawidJavid/slacker-tracker)
 
 ## About
 
