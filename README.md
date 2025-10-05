@@ -27,12 +27,12 @@ SlackerTracker is a web-based habit tracker that works entirely offline. It's de
 ## Getting Started
 
 ### Option 1: Use the live version
-Simply visit [SlackerTracker on GitHub Pages](https://nwdjvd.github.io/slacker-tracker/) to use the application directly in your browser.
+Simply visit [SlackerTracker on GitHub Pages](https://nawidjavid.github.io/slacker-tracker/) to use the application directly in your browser.
 
 ### Option 2: Run locally
 1. Clone this repository:
    ```
-   git clone https://github.com/nwdjvd/slacker-tracker.git
+   git clone https://github.com/nawidjavid/slacker-tracker.git
    ```
 2. Open `index.html` in any modern web browser
 3. Add your first habit and start tracking
